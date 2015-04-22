@@ -1,6 +1,6 @@
 
-module type GATE = 
-  sig 
+module type GATE =
+  sig
 
       type t
 
@@ -10,7 +10,9 @@ module type GATE =
       val up : t -> bool
       val right : t -> bool
       val down : t -> bool
-       
+
+  end
+
 module	Gate : GATE =
   struct
 

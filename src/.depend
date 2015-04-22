@@ -1,0 +1,5 @@
+gate.cmi :
+gate.cmo : gate.cmi
+gate.cmx : gate.cmi
+step1.cmo : gate.cmi
+step1.cmx : gate.cmx

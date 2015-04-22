@@ -1,0 +1,5 @@
+koala.cmi :
+koala.cmo : koala.cmi
+koala.cmx : koala.cmi
+main.cmo : koala.cmi
+main.cmx : koala.cmx

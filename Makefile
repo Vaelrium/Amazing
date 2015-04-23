@@ -5,11 +5,11 @@
 ## Login   <ganesha@epitech.net>
 ##
 ## Started on  Mon Apr 13 12:40:51 2015 Ambroise Coutarel
-## Last update Tue Apr 21 14:51:22 2015 Ambroise Coutarel
+## Last update Thu Apr 23 13:04:36 2015 Rémi DURAND
 ##
 
 SRC1	=	./src/step1.ml		\
-			./src/gate.ml
+		./src/gate.ml
 
 SRC2	=	./src/step2.ml
 

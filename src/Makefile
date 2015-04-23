@@ -9,12 +9,14 @@
 
 NAME = step1
 
-ML =	gate.ml	\
-	case.ml	\
-	step1.ml
+ML =	gate.ml		\
+	case.ml		\
+	step1.ml	\
+	maze.ml
 
 MLI =	gate.mli	\
-	case.mli
+	case.mli	\
+	maze.mli
 
 
 CMI = $(MLI:.mli=.cmi)

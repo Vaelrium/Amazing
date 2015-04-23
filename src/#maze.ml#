@@ -1,0 +1,25 @@
+(*type maze = (int * int * Case.case list)*)
+
+
+module type MAZE =
+  sig
+
+      type v
+
+      val create_maze : int -> v
+      val make_perfect : v -> v
+      val check_perfect : v -> bool
+
+  end
+
+module	Maze : MAZE =
+  struct
+
+    type v = (int * Case.Case.u List.List)
+
+    let create_maze x = (* générer maze de x * x cases fermées*)
+    let make_perfect (x, maze) = (* véritable génération du laby *)
+    let check_perfect(x, maze) = (* vérifie validité laby *)
+    let get_x (x, maze
+  end
+

@@ -1,0 +1,5 @@
+    let create_maze x =
+      let rec helper ctr maze = match ctr with
+	| (x * x) -> maze
+	| _ -> helper (ctr, maze :: Case.Case.create_case(x % 10, x / 10, x, create_door))
+      in helper 0 [] x

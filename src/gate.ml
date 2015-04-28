@@ -16,14 +16,13 @@ module type GATE =
 module	Gate : GATE =
   struct
 
-    type t = (bool * bool * bool * bool)
+    type t = {mutable l : bool; mutable u : bool; mutable r : bool; mutable d : bool }
 
-    let create_door = (false, false, false, false)
-    let new_door l u r d = (l, u, r, d)
-
-    let left (l, u, r, d) = l
-    let up (l, u, r, d) = u
-    let right (l, u, r, d) = r
-    let down (l, u, r, d) = d
+    let create_door = {l = false; u = false; r = false; d = false}
+    let new_door newl newu newr newd = {l = newl; u = newu; r = newr; d = newd}
+    let left t = t.l
+    let up t = t.u
+    let right t = t.r
+    let down t = t.d
 
   end

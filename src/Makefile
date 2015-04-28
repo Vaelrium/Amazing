@@ -11,8 +11,8 @@ NAME = step1
 
 ML =	gate.ml		\
 	case.ml		\
+	maze.ml		\
 	step1.ml	\
-	maze.ml
 
 MLI =	gate.mli	\
 	case.mli	\

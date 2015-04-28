@@ -7,4 +7,6 @@ if List.nth arglist 1 = List.nth arglist 2
 then print_endline("yéé carré")
 else (print_endline("invalid arguments") ; exit 0) ;;
 
-let testgate = Gate.Gate.create_door;;
+let maze = Maze.Maze.create_maze 10;;
+
+Maze.Maze.desc_maze maze;

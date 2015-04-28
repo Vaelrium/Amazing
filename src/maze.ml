@@ -1,5 +1,6 @@
 
 
+
 module type MAZE =
   sig
 

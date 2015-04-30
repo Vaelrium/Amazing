@@ -9,7 +9,10 @@ module type GATE =
       val up : t -> bool
       val right : t -> bool
       val down : t -> bool
-
+      val sl : t -> unit
+      val sr : t -> unit
+      val su : t -> unit
+      val sd : t -> unit
   end
 
   module Gate : GATE

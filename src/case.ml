@@ -9,7 +9,7 @@ module type CASE =
       val get_id : u -> int
       val get_doors : u -> Gate.Gate.t
       val desc : u -> unit
-
+      val set_id : u -> int -> unit
   end
 
 module	Case : CASE =
@@ -23,5 +23,6 @@ module	Case : CASE =
     let get_id u = u.id
     let get_doors u = u.doors
     let desc u = Printf.printf "x = %d, y = %d, id = %d\n" u.x u.y u.id
+    let set_id u id = u.id <- id
 
   end

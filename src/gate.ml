@@ -10,7 +10,10 @@ module type GATE =
       val up : t -> bool
       val right : t -> bool
       val down : t -> bool
-
+      val sl : t -> unit
+      val sr : t -> unit
+      val su : t -> unit
+      val sd : t -> unit
   end
 
 module	Gate : GATE =
@@ -24,5 +27,8 @@ module	Gate : GATE =
     let up t = t.u
     let right t = t.r
     let down t = t.d
-
+    let sl t = t.l <- true
+    let sr t = t.r <- true
+    let su t = t.u <- true
+    let sd t = t.d <- true
   end

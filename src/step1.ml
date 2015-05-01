@@ -9,6 +9,20 @@ let main () =
   Maze.Maze.desc_maze maze ;
   Random.self_init() ;
   if Maze.Maze.check_perfect maze then print_endline "\nOUI !\n" else print_endline "\nNON :(\n" ;
-  Maze.Maze.aff_maze maze 0
+  Maze.Maze.aff_maze maze 0;
+     (* let cases = Maze.Maze.get_maze maze in
+    let door = Case.Case.get_doors cases.(0).(0) in
+    let door2 = Case.Case.get_doors cases.(0).(1) in
+Gate.Gate.sr door;
+Gate.Gate.sl door2;
+    Maze.Maze.aff_maze maze 0;
+
+      print_string "------------------\n";;*)
+  Maze.Maze.make_perfect maze 0;
+
+    Maze.Maze.aff_maze maze 0;
+
+if Maze.Maze.check_perfect maze then print_endline "\nOUI !\n" else print_endline "\nNON :(\n"
+
 
 let _ = main ()

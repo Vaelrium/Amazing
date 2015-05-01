@@ -54,31 +54,42 @@ module	Maze : MAZE =
       in my_iter maze 0 x;;
 
 
+
     let rec aff_x_und x ctr =
       if ctr = x then (print_endline "."; ())
       else (print_string "._"; aff_x_und x (ctr+1))
+
     let joined_down (x, maze) vy vx =
       let doors1 = Case.Case.get_doors maze.(vy).(vx) in
       let doors2 = Case.Case.get_doors maze.(vy+1).(vx) in
       if Gate.Gate.down doors1 && Gate.Gate.up doors2 then true
       else false
+
     let joined_right (x, maze) vy vx =
       let doors1 = Case.Case.get_doors maze.(vy).(vx) in
       let doors2 = Case.Case.get_doors maze.(vy).(vx+1) in
+      Printf.printf "%d %d X1 : %d Y1 : %d | X2 : %d Y2 : %d |||| Right : %B Left : %B\n" (Case.Case.get_id maze.(vy).(vx)) (Case.Case.get_id maze.(vy).(vx+1)) (Case.Case.get_x maze.(vy).(vx)) (Case.Case.get_y maze.(vy).(vx)) (Case.Case.get_x maze.(vy).(vx+1)) (Case.Case.get_y maze.(vy).(vx+1)) (Gate.Gate.right doors1) (Gate.Gate.left doors2);
       if Gate.Gate.right doors1 && Gate.Gate.left doors2 then true
       else false
+
     let rec aff_line (x, maze) y ctr =
       if ctr = 0 then print_string "|";
-      if y != (x -1) then (if (joined_down (x, maze) y ctr) = false then print_string "_" else print_string " ")
+      if y != (x -1) then
+	(if (joined_down (x, maze) y ctr) = false
+	 then print_string "_" else print_string " ")
       else print_string "_";
-      if ctr != (x - 1) then (if (joined_right (x, maze) y ctr) = false then print_string "|" else print_string ".")
+      if ctr != (x - 1) then
+	(if (joined_right (x, maze) y ctr) = false
+	 then print_string "|" else print_string ".")
       else (print_endline "|");
       if ctr != (x-1) then aff_line (x, maze) y (ctr+1)
+
     let rec aff_maze (x, maze) ctr =
       if ctr = 0 then (aff_x_und x 0);
       if ctr = x then ()
       else (aff_line (x, maze) ctr 0;
 	    aff_maze (x, maze) (ctr+1))
+
 
 
     let check_joined one two pos =
@@ -129,6 +140,5 @@ module	Maze : MAZE =
       aff_maze (x, maze) 0;
       if check_perfect (x, maze) || ctr = 4 then ()
       else (one_join (x, maze); make_perfect (x, maze) (ctr+1))
-
 
   end

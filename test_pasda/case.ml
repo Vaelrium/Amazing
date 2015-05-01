@@ -15,7 +15,7 @@ module type CASE =
 module	Case : CASE =
   struct
 
-    type u = {mutable x : int ; mutable y :int ; mutable id : int; doors : Gate.Gate.t}
+    type u = {mutable x : int ; mutable y :int ; mutable id : int; mutable doors : Gate.Gate.t}
 
     let create_case newx newy newid = {x = newx ; y = newy ; id = newid ; doors = Gate.Gate.create_door}
     let get_x u = u.x

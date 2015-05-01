@@ -18,9 +18,20 @@ Gate.Gate.sl door2;
     Maze.Maze.aff_maze maze 0;
 
       print_string "------------------\n";;*)
-  Maze.Maze.make_perfect maze 0;
-
-    Maze.Maze.aff_maze maze 0;
+  (* Maze.Maze.make_perfect maze 0; *)
+  let laby = Maze.Maze.get_maze maze in
+  let test = Case.Case.get_doors laby.(0).(0) in
+  if Gate.Gate.right test == false 
+  then print_endline "right gate (0,0) is false";
+  Gate.Gate.sr test;
+  if Gate.Gate.right test == false 
+  then print_endline "right gate (0,0) is false" 
+  else print_endline "right gate (0,0) is true";
+  let test2 = Case.Case.get_doors laby.(0).(1) in
+  if Gate.Gate.right test2 == false 
+  then print_endline "right gate (0,1) is false" 
+  else print_endline "right gate (0,1) is true";
+  Maze.Maze.aff_maze maze 0;
 
 if Maze.Maze.check_perfect maze then print_endline "\nOUI !\n" else print_endline "\nNON :(\n"
 

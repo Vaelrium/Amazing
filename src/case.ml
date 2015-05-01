@@ -17,7 +17,7 @@ module	Case : CASE =
 
     type u = {mutable x : int ; mutable y :int ; mutable id : int; doors : Gate.Gate.t}
 
-    let create_case newx newy newid = {x = newx ; y = newy ; id = newid ; doors = Gate.Gate.create_door}
+    let create_case newx newy newid = {x = newx ; y = newy ; id = newid ; doors = Gate.Gate.new_door false false false false}
     let get_x u = u.x
     let get_y u = u.y
     let get_id u = u.id

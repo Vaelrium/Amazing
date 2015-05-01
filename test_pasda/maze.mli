@@ -16,7 +16,7 @@ module type MAZE =
       val check_diff : Case.Case.u -> Case.Case.u -> bool
       val uniformiz_idz : v -> Case.Case.u -> int -> unit
       val one_join : v -> unit
-      val make_perfect : v -> int -> unit (* int de test *)
+      val make_perfect : v -> unit
 
       val aff_x_und : int -> int -> unit
       val joined_down : v -> int -> int -> bool

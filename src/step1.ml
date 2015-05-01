@@ -28,9 +28,10 @@ Gate.Gate.sl door2;
   then print_endline "right gate (0,0) is false" 
   else print_endline "right gate (0,0) is true";
   let test2 = Case.Case.get_doors laby.(0).(1) in
-  if Gate.Gate.right test2 == false 
-  then print_endline "right gate (0,1) is false" 
-  else print_endline "right gate (0,1) is true";
+  Gate.Gate.sl test2;
+  if Gate.Gate.left test2 == false 
+  then print_endline "left gate (0,1) is false" 
+  else print_endline "leftt gate (0,1) is true";
   Maze.Maze.aff_maze maze 0;
 
 if Maze.Maze.check_perfect maze then print_endline "\nOUI !\n" else print_endline "\nNON :(\n"

@@ -19,7 +19,7 @@ module type MAZE =
       val check_diff : Case.Case.u -> Case.Case.u -> bool
       val uniformiz_idz : v -> Case.Case.u -> int -> unit
       val one_join : v -> unit
-      val make_perfect : v -> int -> unit (* int de test *)
+      val make_perfect : v -> unit
 
       val aff_x_und : int -> int -> unit
       val joined_down : v -> int -> int -> bool
@@ -53,7 +53,7 @@ module	Maze : MAZE =
 	else false
       in my_iter maze 0 x;;
 
-
+      (* Display *)
 
     let rec aff_x_und x ctr =
       if ctr = x then (print_endline "."; ())
@@ -68,7 +68,6 @@ module	Maze : MAZE =
     let joined_right (x, maze) vy vx =
       let doors1 = Case.Case.get_doors maze.(vy).(vx) in
       let doors2 = Case.Case.get_doors maze.(vy).(vx+1) in
-      Printf.printf "%d %d X1 : %d Y1 : %d | X2 : %d Y2 : %d |||| Right : %B Left : %B\n" (Case.Case.get_id maze.(vy).(vx)) (Case.Case.get_id maze.(vy).(vx+1)) (Case.Case.get_x maze.(vy).(vx)) (Case.Case.get_y maze.(vy).(vx)) (Case.Case.get_x maze.(vy).(vx+1)) (Case.Case.get_y maze.(vy).(vx+1)) (Gate.Gate.right doors1) (Gate.Gate.left doors2);
       if Gate.Gate.right doors1 && Gate.Gate.left doors2 then true
       else false
 
@@ -90,7 +89,7 @@ module	Maze : MAZE =
       else (aff_line (x, maze) ctr 0;
 	    aff_maze (x, maze) (ctr+1))
 
-
+    (* Make perfect *)
 
     let check_joined one two pos =
       let d1 = Case.Case.get_doors one in
@@ -114,7 +113,6 @@ module	Maze : MAZE =
       if (vy + 1) < (x-1) then (if (check_diff to_change cases.(vy+1).(vx)) && (check_joined to_change cases.(vy+1).(vx) 2) then uniformiz_idz (x, cases) cases.(vy+1).(vx) id);
       if (vy - 1) >= 0 then (if (check_diff to_change cases.(vy-1).(vx)) && (check_joined to_change cases.(vy-1).(vx) 3) then uniformiz_idz (x, cases) cases.(vy-1).(vx) id)
 
-
     let rec find_random (x, cases) =
       let dir = Random.int 4 in
       let vx = Random.int x in
@@ -136,9 +134,10 @@ module	Maze : MAZE =
       else (Gate.Gate.sd doors1; Gate.Gate.su doors2);
       uniformiz_idz (x, cases) second (Case.Case.get_id first)
 
-    let rec make_perfect (x, maze) ctr = (* delete ctr *)
-      aff_maze (x, maze) 0;
-      if check_perfect (x, maze) || ctr = 4 then ()
-      else (one_join (x, maze); make_perfect (x, maze) (ctr+1))
+    let rec make_perfect (x, maze) =
+      if check_perfect (x, maze) then ()
+      else (one_join (x, maze); make_perfect (x, maze))
 
   end
+
+      (*Printf.printf "%d %d X1 : %d Y1 : %d | X2 : %d Y2 : %d |||| Right : %B Left : %B\n" (Case.Case.get_id maze.(vy).(vx)) (Case.Case.get_id maze.(vy).(vx+1)) (Case.Case.get_x maze.(vy).(vx)) (Case.Case.get_y maze.(vy).(vx)) (Case.Case.get_x maze.(vy).(vx+1)) (Case.Case.get_y maze.(vy).(vx+1)) (Gate.Gate.right doors1) (Gate.Gate.left doors2);*)

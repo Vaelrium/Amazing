@@ -69,6 +69,7 @@ let main () =
   let x = int_of_string (List.nth arglist 1) in
   let y = int_of_string (List.nth arglist 2) in
   if x <> y || x < 1 then (print_endline("invalid arguments") ; exit 0) ;
+  if x > 30 then (print_endline("Parameters to large for proper rendering. try again with lower values") ; exit 0) ;
   let maze = Maze.Maze.create_maze x in
   Random.self_init() ;
   Maze.Maze.make_perfect maze;
